@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 public class PenjualActivity extends AppCompatActivity {
     public static final String FRAGMENT_VIEWPAGER = "FRAGMENT_VIEWPAGER";
@@ -15,6 +16,9 @@ public class PenjualActivity extends AppCompatActivity {
     public static final String FRAGMENT_KEDUA = "FRAGMENT_KEDUA";
     public static final String FRAGMENT_KETIGA = "FRAGMENT_KETIGA";
     public static final String FRAGMENT_KEEMPAT = "FRAGMENT_KEEMPAT";
+    String username;
+
+
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -22,16 +26,23 @@ public class PenjualActivity extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_home_penjual:
-                    replaceFragment(Fragment_home_penjual.newInstance(), FRAGMENT_PERTAMA);
+
+                    replaceFragment(Fragment_home_penjual.newInstance());
+
                     return true;
                 case R.id.navigation_jualan_penjual:
-                    replaceFragment(Fragment_jualan_penjual.newInstance(), FRAGMENT_KEDUA);
+                    replaceFragment(Fragment_jualan_penjual.newInstance());
                     return true;
                 case R.id.navigation_transaksi_penjual:
-                    replaceFragment(Fragment_transaksi_penjual.newInstance(), FRAGMENT_KETIGA);
+                    replaceFragment(Fragment_transaksi_penjual.newInstance());
                     return true;
                 case R.id.navigation_profil_penjual:
-                    replaceFragment(Fragment_profil_penjual.newInstance(),FRAGMENT_KEEMPAT);
+                    Bundle data = new Bundle();
+                    data.putString("username", username);
+                    Fragment profil = Fragment_profil_penjual.newInstance();
+                    profil.setArguments(data);
+                    replaceFragment(profil);
+                    //replaceFragment(Fragment_profil_penjual.newInstance());
                     return true;
             }
             return false;
@@ -43,6 +54,9 @@ public class PenjualActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_penjual);
 
+
+        username = getIntent().getStringExtra("username");
+
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
@@ -51,9 +65,12 @@ public class PenjualActivity extends AppCompatActivity {
                 .commit();
 
     }
-    private void replaceFragment(Fragment newFragment, String tag) {
+
+    private void replaceFragment(Fragment newFragment) {
+
+
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.fragment_container, newFragment, tag)
+        ft.replace(R.id.fragment_container, newFragment)
                 .commit();
 
     }
