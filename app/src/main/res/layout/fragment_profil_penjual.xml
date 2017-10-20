@@ -24,7 +24,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="testing"
+                android:text="username"
                 android:textColor="#ffffff"
                 android:id="@+id/username_penjual"
                 android:layout_above="@+id/email_penjual"
@@ -36,7 +36,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="nelayan@gmail.com"
+                android:text="email"
                 android:textColor="#ffffff"
                 android:id="@+id/email_penjual"
                 android:layout_gravity="center_horizontal|bottom"

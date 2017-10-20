@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 import java.lang.reflect.Field;
+import java.util.ArrayList;
 
 public class PenjualActivity extends AppCompatActivity {
     public static final String FRAGMENT_VIEWPAGER = "FRAGMENT_VIEWPAGER";
@@ -20,7 +21,8 @@ public class PenjualActivity extends AppCompatActivity {
     public static final String FRAGMENT_KEDUA = "FRAGMENT_KEDUA";
     public static final String FRAGMENT_KETIGA = "FRAGMENT_KETIGA";
     public static final String FRAGMENT_KEEMPAT = "FRAGMENT_KEEMPAT";
-    String username;
+    String username,email;
+    //ArrayList dataToFragment = new ArrayList();
 
 
 
@@ -43,6 +45,7 @@ public class PenjualActivity extends AppCompatActivity {
                 case R.id.navigation_profil_penjual:
                     Bundle data = new Bundle();
                     data.putString("username", username);
+                    data.putString("email", email);
                     Fragment profil = Fragment_profil_penjual.newInstance();
                     profil.setArguments(data);
                     replaceFragment(profil);
@@ -60,6 +63,8 @@ public class PenjualActivity extends AppCompatActivity {
 
 
         username = getIntent().getStringExtra("username");
+        email = getIntent().getStringExtra("email");
+
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);

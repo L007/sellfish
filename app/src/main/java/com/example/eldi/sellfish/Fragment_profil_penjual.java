@@ -33,8 +33,11 @@ public class Fragment_profil_penjual extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_profil_penjual, container, false);
         username_penjual = (TextView) view.findViewById(R.id.username_penjual);
+        email_penjual=(TextView) view.findViewById(R.id.email_penjual);
         String username = getArguments().getString("username");
+        String email = getArguments().getString("email");
         username_penjual.setText(username);
+        email_penjual.setText(email);
         // Inflate the layout for this fragment
 
         return view;
