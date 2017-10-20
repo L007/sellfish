@@ -2,13 +2,17 @@ package com.example.eldi.sellfish;
 
 import android.support.annotation.NonNull;
 import android.support.design.internal.BottomNavigationItemView;
+import android.support.design.internal.BottomNavigationMenuView;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.TextView;
+
+import java.lang.reflect.Field;
 
 public class PenjualActivity extends AppCompatActivity {
     public static final String FRAGMENT_VIEWPAGER = "FRAGMENT_VIEWPAGER";
@@ -59,6 +63,7 @@ public class PenjualActivity extends AppCompatActivity {
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        BottomNavigationViewHelper.disableShiftMode(navigation);
 
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.add(R.id.fragment_container, Fragment_home_penjual.newInstance(), FRAGMENT_PERTAMA)
@@ -74,4 +79,6 @@ public class PenjualActivity extends AppCompatActivity {
                 .commit();
 
     }
+
+
 }

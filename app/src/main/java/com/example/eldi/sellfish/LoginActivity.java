@@ -25,7 +25,7 @@ public class LoginActivity extends AppCompatActivity {
     EditText etUserName,etPassword;
     public String username ,password, user_id ,email;
     int level;
-    public static final String loginURL ="http://192.168.43.241/sellfish/login.php"; //local 10.0.3.2
+    public static final String loginURL ="http://10.0.3.2/sellfish/login.php";//"http://192.168.43.241/sellfish/login.php"; //local 10.0.3.2
     public static final String KEY_USERNAME="username";
     public static final String KEY_PASSWORD="password";
     @Override
@@ -34,6 +34,10 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         etUserName = (EditText)findViewById(R.id.etUsername);
         etPassword= (EditText)findViewById(R.id.etPassword);
+     /*   etPassword.setKeyListener(null);
+        etPassword.setCursorVisible(false);
+        etPassword.setPressed(false);
+        etPassword.setFocusable(false);*/
 
       /*  btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
