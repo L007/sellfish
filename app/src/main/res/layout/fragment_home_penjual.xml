@@ -7,9 +7,54 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="FRAGMENT HOME"
+        android:id="@+id/texthome"
         android:textSize="25dp"
         android:textStyle="bold"
         android:layout_centerInParent="true"
         android:layout_gravity="center_horizontal|top" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="cuaca"
+        android:id="@+id/cuaca"
+        android:textSize="25dp"
+
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/kota"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="KOTA"
+        android:id="@+id/kota"
+        android:textSize="40dp"
+        android:textStyle="bold"
+        android:layout_gravity="center_horizontal|top"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="17dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="suhu"
+        android:id="@+id/suhu"
+        android:textSize="25dp"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/cuaca"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="kelembaban"
+        android:id="@+id/kelembaban"
+        android:textSize="25dp"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/suhu"
+        android:layout_alignLeft="@+id/suhu"
+        android:layout_alignStart="@+id/suhu" />
 
 </RelativeLayout>
