@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -76,7 +77,9 @@ public class Fragment_home_penjual extends Fragment {
 
 
     private void tampilCuaca() {
-        final ProgressDialog loading = ProgressDialog.show(this.getActivity(), "Please wait...", "Fetching data...", false, false);
+       final ProgressDialog loading = ProgressDialog.show(this.getActivity(), "Please wait...", "Fetching data...", false, false);
+       // ProgressBar progressBar = new ProgressBar(this.getActivity(), null, android.R.attr.progressBarStyleSmall);
+
         StringRequest stringRequest = new StringRequest(Request.Method.POST, cuacaURL,
                 new Response.Listener<String>() {
                     @Override
