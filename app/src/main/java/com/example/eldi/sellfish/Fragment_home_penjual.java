@@ -10,6 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -22,7 +23,10 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -30,10 +34,10 @@ import java.util.Map;
  * Created by eldi on 18/10/2017.
  */
 public class Fragment_home_penjual extends Fragment {
-    public static final String cuacaURL ="http://192.168.43.241/sellfish/cuaca.php";
-    String kota,cuaca,suhu,kelembaban;
+    public static final String cuacaURL ="http://10.0.3.2/sellfish/cuaca.php";
+    String kota,cuaca,suhu,kelembaban,waktu;
    // private ArrayList<String> cuaca;
-    TextView txtKota,txtCuaca,txtSuhu,txtKelembaban;
+    TextView txtKota,txtWaktu,txtTanggal,txtCuaca,txtSuhu,txtKelembaban;
 
     public Fragment_home_penjual() {
 
@@ -55,7 +59,11 @@ public class Fragment_home_penjual extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home_penjual, container, false);
+
+
         txtKota=(TextView)view.findViewById(R.id.kota);
+        txtWaktu=(TextView)view.findViewById(R.id.waktu);
+        txtTanggal=(TextView)view.findViewById(R.id.tanggal);
         txtCuaca=(TextView)view.findViewById(R.id.cuaca);
         txtSuhu=(TextView)view.findViewById(R.id.suhu);
         txtKelembaban=(TextView)view.findViewById(R.id.kelembaban);
@@ -77,12 +85,16 @@ public class Fragment_home_penjual extends Fragment {
                             boolean error = jObj.getBoolean("error");
                             if (!error) {
                                 //JSONObject user = jObj.getJSONObject("user");
-                                kota = jObj.get("kota").toString();
+
+                                kota = jObj.getString("kota").toString();
+                                waktu=jObj.getString("waktu").toString();
                                 cuaca = jObj.getString("cuaca").toString();
                                 suhu=jObj.getString("suhu").toString();
                                 kelembaban=jObj.getString("kelembaban").toString();
 
                                 txtKota.setText(kota);
+                                txtWaktu.setText(waktu);
+                                txtTanggal.setText(getTanggal());
                                 txtCuaca.setText(cuaca);
                                 txtSuhu.setText(suhu+" \u00b0"+"C");
                                 txtKelembaban.setText(kelembaban+" %");
@@ -121,7 +133,16 @@ public class Fragment_home_penjual extends Fragment {
                 }) {
 
         };
+        stringRequest.setRetryPolicy(new DefaultRetryPolicy(
+                5000,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         AppController.getInstance().addToRequestQueue(stringRequest);
+    }
+    public String getTanggal(){
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        Date date = new Date();
+        return dateFormat.format(date);
     }
 
     }
