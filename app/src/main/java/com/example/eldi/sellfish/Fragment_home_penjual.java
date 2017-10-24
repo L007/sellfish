@@ -1,5 +1,6 @@
 package com.example.eldi.sellfish;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -34,7 +35,7 @@ import java.util.Map;
  * Created by eldi on 18/10/2017.
  */
 public class Fragment_home_penjual extends Fragment {
-    public static final String cuacaURL ="http://10.0.3.2/sellfish/cuaca.php";
+    public static final String cuacaURL ="http://192.168.43.241/sellfish/cuaca.php"; //local 10.0.3.2, device 192.168.43.241
     String kota,cuaca,suhu,kelembaban,waktu;
    // private ArrayList<String> cuaca;
     TextView txtKota,txtWaktu,txtTanggal,txtCuaca,txtSuhu,txtKelembaban;
@@ -75,7 +76,7 @@ public class Fragment_home_penjual extends Fragment {
 
 
     private void tampilCuaca() {
-
+        final ProgressDialog loading = ProgressDialog.show(this.getActivity(), "Please wait...", "Fetching data...", false, false);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, cuacaURL,
                 new Response.Listener<String>() {
                     @Override
@@ -85,7 +86,7 @@ public class Fragment_home_penjual extends Fragment {
                             boolean error = jObj.getBoolean("error");
                             if (!error) {
                                 //JSONObject user = jObj.getJSONObject("user");
-
+                                loading.dismiss();
                                 kota = jObj.getString("kota").toString();
                                 waktu=jObj.getString("waktu").toString();
                                 cuaca = jObj.getString("cuaca").toString();
