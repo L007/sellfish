@@ -23,7 +23,7 @@ import java.util.Map;
 public class LoginActivity extends AppCompatActivity {
     Button btnLogin;
     EditText etUserName,etPassword;
-    public String username ,password, user_id ,email;
+    public String username ,password ,email,user_id;
     int level;
     public static final String loginURL ="http://192.168.43.241/sellfish/login.php";//"http://192.168.43.241/sellfish/login.php"; //local 10.0.3.2
     public static final String KEY_USERNAME="username";
@@ -62,7 +62,7 @@ public class LoginActivity extends AppCompatActivity {
                             boolean error = jObj.getBoolean("error");
                             if (!error) {
                                 //JSONObject user = jObj.getJSONObject("user");
-                                user_id = jObj.getString("id_user").trim();
+                                user_id = jObj.getString("id_user");
                                 username = jObj.getString("username").trim();
                                 email = jObj.getString("email").trim();
                                 level = jObj.getInt("level");

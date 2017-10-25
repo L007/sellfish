@@ -77,7 +77,7 @@ public class Fragment_home_penjual extends Fragment {
 
 
     private void tampilCuaca() {
-       final ProgressDialog loading = ProgressDialog.show(this.getActivity(), "Please wait...", "Fetching data...", false, false);
+      // final ProgressDialog loading = ProgressDialog.show(this.getActivity(), "Please wait...", "Fetching data...", false, false);
        // ProgressBar progressBar = new ProgressBar(this.getActivity(), null, android.R.attr.progressBarStyleSmall);
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, cuacaURL,
@@ -89,7 +89,7 @@ public class Fragment_home_penjual extends Fragment {
                             boolean error = jObj.getBoolean("error");
                             if (!error) {
                                 //JSONObject user = jObj.getJSONObject("user");
-                                loading.dismiss();
+                                //loading.dismiss();
                                 kota = jObj.getString("kota").toString();
                                 waktu=jObj.getString("waktu").toString();
                                 cuaca = jObj.getString("cuaca").toString();

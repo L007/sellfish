@@ -50,9 +50,70 @@
             android:text="FRAGMENT PROFIL"
             android:textSize="25dp"
             android:textStyle="bold"
-            android:layout_marginTop="176dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="95dp" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            style="?android:attr/borderlessButtonStyle"
+            android:textColor="@color/colorPrimaryDark"
+            android:gravity="left|center_vertical"
+            android:drawablePadding="40dp"
+            android:paddingLeft="20dp"
+            android:drawableLeft="@drawable/ic_profil_penjual2"
+            android:text="Profil"
+            android:id="@+id/profil"
             android:layout_below="@+id/frameProfil"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="27dp" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            style="?android:attr/borderlessButtonStyle"
+            android:textColor="@color/colorPrimaryDark"
+            android:gravity="left|center_vertical"
+            android:drawablePadding="40dp"
+            android:paddingLeft="20dp"
+            android:drawableLeft="@drawable/ic_stat_penjualan"
+            android:text="Statistik penjualan"
+            android:id="@+id/stat_penjualan"
+            android:layout_below="@+id/profil"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <Button
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:textColor="@color/colorPrimaryDark"
+            android:gravity="left|center_vertical"
+            android:drawablePadding="40dp"
+            android:paddingLeft="20dp"
+            android:drawableLeft="@drawable/ic_feedback"
+            android:text="Feedback"
+            android:id="@+id/feedback"
+            android:layout_below="@+id/stat_penjualan"
             android:layout_centerHorizontal="true" />
+
+        <Button
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:textColor="@color/colorPrimaryDark"
+            android:gravity="left|center_vertical"
+            android:drawablePadding="40dp"
+            android:paddingLeft="20dp"
+            android:drawableLeft="@drawable/ic_version"
+            android:text="tentang aplikasi"
+            android:id="@+id/about"
+            android:layout_below="@+id/feedback"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
 
     </RelativeLayout>
 

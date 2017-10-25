@@ -84,4 +84,6 @@
         android:layout_alignLeft="@+id/waktu"
         android:layout_alignStart="@+id/waktu" />
 
+
+
 </RelativeLayout>

@@ -21,7 +21,7 @@ public class PenjualActivity extends AppCompatActivity {
     public static final String FRAGMENT_KEDUA = "FRAGMENT_KEDUA";
     public static final String FRAGMENT_KETIGA = "FRAGMENT_KETIGA";
     public static final String FRAGMENT_KEEMPAT = "FRAGMENT_KEEMPAT";
-    String username,email;
+    String username,email,id;
     //ArrayList dataToFragment = new ArrayList();
 
 
@@ -46,6 +46,7 @@ public class PenjualActivity extends AppCompatActivity {
                     Bundle data = new Bundle();
                     data.putString("username", username);
                     data.putString("email", email);
+                    data.putString("id",id);
                     Fragment profil = Fragment_profil_penjual.newInstance();
                     profil.setArguments(data);
                     replaceFragment(profil);
@@ -64,6 +65,7 @@ public class PenjualActivity extends AppCompatActivity {
 
         username = getIntent().getStringExtra("username");
         email = getIntent().getStringExtra("email");
+        id=getIntent().getStringExtra("user_id");
 
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
