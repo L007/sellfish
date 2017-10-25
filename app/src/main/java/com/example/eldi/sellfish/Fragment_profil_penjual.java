@@ -114,7 +114,7 @@ public class Fragment_profil_penjual extends Fragment {
                                 i.putExtra("no_ktp",no_ktp);
 
 
-                                
+
 
                                 startActivity(i);
 
