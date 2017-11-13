@@ -1,6 +1,8 @@
 package com.example.eldi.sellfish;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +12,7 @@ import android.view.ViewGroup;
  * Created by eldi on 18/10/2017.
  */
 public class Fragment_jualan_penjual extends Fragment {
+    private FloatingActionButton fab;
     public Fragment_jualan_penjual() {
 
     }
@@ -28,7 +31,18 @@ public class Fragment_jualan_penjual extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_jualan_penjual, container, false);
+
+        View view = inflater.inflate(R.layout.fragment_jualan_penjual, container, false);
+        fab = (FloatingActionButton)view.findViewById(R.id.fab);
+
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getActivity(),TambahProdcutActivity.class);
+                startActivity(i);
+            }
+        });
+        return view;
     }
 }
 

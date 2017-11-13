@@ -23,7 +23,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     String nama, username, password, email, noKtp;
     EditText etNama, etUserName, etPassword, etEmail, etKtp;
-    public static final String registerURL = "http://192.168.43.241/sellfish/register.php"; //local 10.0.3.2
+    public static final String registerURL = "http://himasif.ilkom.unej.ac.id/sellfish/register.php"; //local 10.0.3.2
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

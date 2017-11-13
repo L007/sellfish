@@ -36,7 +36,7 @@ import java.util.Map;
  * Created by eldi on 18/10/2017.
  */
 public class Fragment_home_penjual extends Fragment {
-    public static final String cuacaURL ="http://192.168.43.241/sellfish/cuaca.php"; //local 10.0.3.2, device 192.168.43.241
+    public static final String cuacaURL ="http://himasif.ilkom.unej.ac.id/sellfish/cuaca.php"; //local 10.0.3.2, device 192.168.43.241
     String kota,cuaca,suhu,kelembaban,waktu;
    // private ArrayList<String> cuaca;
     TextView txtKota,txtWaktu,txtTanggal,txtCuaca,txtSuhu,txtKelembaban;

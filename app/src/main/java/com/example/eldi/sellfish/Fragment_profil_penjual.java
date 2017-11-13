@@ -28,7 +28,7 @@ import java.util.Map;
  * Created by eldi on 18/10/2017.
  */
 public class Fragment_profil_penjual extends Fragment {
-    public static final String getUserProfil ="http://192.168.43.241/sellfish/user.php?apicall=get_user_by_id";
+    public static final String getUserProfil ="http://himasif.ilkom.unej.ac.id/sellfish/user.php?apicall=get_user_by_id";
     private TextView username_penjual, email_penjual;
     int id;
 

@@ -41,8 +41,9 @@
         <activity android:name=".SupirActivity" />
         <activity
             android:name=".about"
-            android:theme="@style/fullscreen"></activity>
-        <activity android:name=".profil_user"></activity>
+            android:theme="@style/fullscreen" />
+        <activity android:name=".profil_user" />
+        <activity android:name=".TambahProdcutActivity"></activity>
     </application>
 
 </manifest>
