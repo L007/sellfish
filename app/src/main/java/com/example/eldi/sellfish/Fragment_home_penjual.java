@@ -2,6 +2,7 @@ package com.example.eldi.sellfish;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -87,6 +88,8 @@ public class Fragment_home_penjual extends Fragment {
                         try {
                             JSONObject jObj = new JSONObject(response);
                             boolean error = jObj.getBoolean("error");
+                            SharedPreferences pref = getActivity().getApplicationContext().getSharedPreferences("MyPref", 0); // 0 - for private mode
+                            SharedPreferences.Editor editor = pref.edit();
                             if (!error) {
                                 //JSONObject user = jObj.getJSONObject("user");
                                 loading.dismiss();

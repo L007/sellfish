@@ -1,6 +1,7 @@
 package com.example.eldi.sellfish;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -23,9 +24,10 @@ import java.util.Map;
 public class LoginActivity extends AppCompatActivity {
     Button btnLogin;
     EditText etUserName,etPassword;
+
     public String username ,password ,email,user_id;
     int level;
-    public static final String loginURL ="http://himasif.ilkom.unej.ac.id/sellfish/login.php";//"http://192.168.43.241/sellfish/login.php"; //local 10.0.3.2
+    public static final String loginURL ="http://192.168.43.241/sellfish/login.php";//"http://192.168.43.241/sellfish/login.php"; //local 10.0.3.2
     public static final String KEY_USERNAME="username";
     public static final String KEY_PASSWORD="password";
     @Override
@@ -34,6 +36,7 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         etUserName = (EditText)findViewById(R.id.etUsername);
         etPassword= (EditText)findViewById(R.id.etPassword);
+
      /*   etPassword.setKeyListener(null);
         etPassword.setCursorVisible(false);
         etPassword.setPressed(false);
@@ -66,7 +69,13 @@ public class LoginActivity extends AppCompatActivity {
                                 username = jObj.getString("username").trim();
                                 email = jObj.getString("email").trim();
                                 level = jObj.getInt("level");
+                                SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", 0); // 0 - for private mode
+                                SharedPreferences.Editor editor = pref.edit();
+                                editor.putString("id_user", user_id); // Storing string
+                                editor.putString("username",username);
+                                editor.putString("email",email);
 
+                                editor.commit();
                                 if (level == 1) {
                                     Intent intent = new Intent(LoginActivity.this, AdminActivity.class);
                                     intent.putExtra("user_id", user_id);
@@ -81,9 +90,9 @@ public class LoginActivity extends AppCompatActivity {
                                     startActivity(intent);
                                 } else if (level == 3) {
                                     Intent intent = new Intent(LoginActivity.this, PenjualActivity.class);
-                                    intent.putExtra("user_id", user_id);
+                                   /* intent.putExtra("user_id", user_id);
                                     intent.putExtra("username", username);
-                                    intent.putExtra("email", email);
+                                    intent.putExtra("email", email);*/
                                     startActivity(intent);
                                 } else if (level == 4) {
                                     Intent intent = new Intent(LoginActivity.this, SupirActivity.class);

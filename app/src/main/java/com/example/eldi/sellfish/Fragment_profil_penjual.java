@@ -2,6 +2,7 @@ package com.example.eldi.sellfish;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -28,7 +29,7 @@ import java.util.Map;
  * Created by eldi on 18/10/2017.
  */
 public class Fragment_profil_penjual extends Fragment {
-    public static final String getUserProfil ="http://himasif.ilkom.unej.ac.id/sellfish/user.php?apicall=get_user_by_id";
+    public static final String getUserProfil ="http://192.168.43.241/sellfish/user.php?apicall=get_user_by_id";
     private TextView username_penjual, email_penjual;
     int id;
 
@@ -53,14 +54,16 @@ public class Fragment_profil_penjual extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_profil_penjual, container, false);
+        SharedPreferences pref = getActivity().getApplicationContext().getSharedPreferences("MyPref", 0); // 0 - for private mode
+        SharedPreferences.Editor editor = pref.edit();
         username_penjual = (TextView) view.findViewById(R.id.username_penjual);
         email_penjual=(TextView) view.findViewById(R.id.email_penjual);
         tentang=(Button)view.findViewById(R.id.about);
         profil=(Button)view.findViewById(R.id.profil);
 
-        String txtUsername = getArguments().getString("username");
-        String txtEmail = getArguments().getString("email");
-        id= Integer.parseInt(getArguments().getString("id"));
+        String txtUsername = pref.getString("username",null); //getArguments().getString("username");
+        String txtEmail = pref.getString("email",null);//getArguments().getString("email");
+        id= Integer.parseInt(pref.getString("id_user",null));//getArguments().getString("id")
         username_penjual.setText(txtUsername);
         email_penjual.setText(txtEmail);
         // Inflate the layout for this
@@ -94,6 +97,7 @@ public class Fragment_profil_penjual extends Fragment {
                         try {
                             JSONObject jObj = new JSONObject(response);
                             boolean error = jObj.getBoolean("error");
+
                             if (!error) {
                                 loading.dismiss();
                                 //JSONObject user = jObj.getJSONObject("user");
