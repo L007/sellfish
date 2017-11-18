@@ -5,6 +5,8 @@ import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.provider.MediaStore;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Base64;
@@ -39,7 +41,7 @@ public class TambahProdcutActivity extends AppCompatActivity {
     EditText namaIkan, stokIkan, hargaIkan, deskripsiIkan;
     private final int IMG_REQUEST = 1;
     private Bitmap bitmap;
-    private String uploadURL = "http://192.168.43.241/sellfish/insertJualan.php";
+    private String uploadURL = "http://10.0.3.2/sellfish/jualan.php?apicall=insert_jualan";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -112,7 +114,10 @@ public class TambahProdcutActivity extends AppCompatActivity {
                             if (status) {
                                 //JSONObject user = jObj.getJSONObject("user");
                                 Toast.makeText(getApplicationContext(), "upload sukses", Toast.LENGTH_SHORT).show();
+                                getListener();
                                 onBackPressed();
+                               // onResume();
+
 
                             } else {
                                 // Error in login. Get the error message
@@ -169,5 +174,23 @@ public class TambahProdcutActivity extends AppCompatActivity {
         bitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
         byte[] imgBytes = byteArrayOutputStream.toByteArray();
         return Base64.encodeToString(imgBytes, Base64.DEFAULT);
+    }
+
+    private FragmentManager.OnBackStackChangedListener getListener() {
+        FragmentManager.OnBackStackChangedListener result = new FragmentManager.OnBackStackChangedListener() {
+            public void onBackStackChanged() {
+                FragmentManager manager = getSupportFragmentManager();
+                if (manager != null) {
+                    int backStackEntryCount = manager.getBackStackEntryCount();
+                    if (backStackEntryCount == 0) {
+                        finish();
+                    }
+                    Fragment fragment = manager.getFragments()
+                            .get(backStackEntryCount - 1);
+                    fragment.onResume();
+                }
+            }
+        };
+        return result;
     }
 }

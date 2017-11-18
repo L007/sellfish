@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
+   <!-- <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="FRAGMENT JUALAN"
@@ -13,6 +13,26 @@
         android:textStyle="bold"
         android:layout_centerInParent="true"
         android:layout_gravity="center_horizontal|top" />
+    -->
+    <!--<GridView
+        android:id="@+id/gridView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:columnWidth="150dp"
+        android:gravity="center"
+        android:horizontalSpacing="10dp"
+        android:numColumns="2"
+        android:stretchMode="columnWidth"
+        android:layout_marginTop="20dp"
+        android:verticalSpacing="10dp"/>-->
+
+    <ListView
+        android:id="@+id/list"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:divider="#d9d9d9"
+        android:dividerHeight="1dp"
+        />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"

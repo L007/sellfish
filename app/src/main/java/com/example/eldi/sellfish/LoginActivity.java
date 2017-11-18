@@ -27,7 +27,7 @@ public class LoginActivity extends AppCompatActivity {
 
     public String username ,password ,email,user_id;
     int level;
-    public static final String loginURL ="http://192.168.43.241/sellfish/login.php";//"http://192.168.43.241/sellfish/login.php"; //local 10.0.3.2
+    public static final String loginURL ="http://10.0.3.2/sellfish/login.php";//"http://192.168.43.241/sellfish/login.php"; //local 10.0.3.2
     public static final String KEY_USERNAME="username";
     public static final String KEY_PASSWORD="password";
     @Override
