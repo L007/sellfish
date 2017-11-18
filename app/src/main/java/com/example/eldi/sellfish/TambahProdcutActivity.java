@@ -114,7 +114,6 @@ public class TambahProdcutActivity extends AppCompatActivity {
                             if (status) {
                                 //JSONObject user = jObj.getJSONObject("user");
                                 Toast.makeText(getApplicationContext(), "upload sukses", Toast.LENGTH_SHORT).show();
-                                getListener();
                                 onBackPressed();
                                // onResume();
 
@@ -176,21 +175,5 @@ public class TambahProdcutActivity extends AppCompatActivity {
         return Base64.encodeToString(imgBytes, Base64.DEFAULT);
     }
 
-    private FragmentManager.OnBackStackChangedListener getListener() {
-        FragmentManager.OnBackStackChangedListener result = new FragmentManager.OnBackStackChangedListener() {
-            public void onBackStackChanged() {
-                FragmentManager manager = getSupportFragmentManager();
-                if (manager != null) {
-                    int backStackEntryCount = manager.getBackStackEntryCount();
-                    if (backStackEntryCount == 0) {
-                        finish();
-                    }
-                    Fragment fragment = manager.getFragments()
-                            .get(backStackEntryCount - 1);
-                    fragment.onResume();
-                }
-            }
-        };
-        return result;
-    }
+
 }
