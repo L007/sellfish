@@ -23,7 +23,7 @@ public class SplashScreen extends Activity {
             @Override
             public void run() {
                 // TODO Auto-generated method stub
-                Intent i = new Intent(SplashScreen.this, MenuAwalActivity.class);
+               Intent i = new Intent(SplashScreen.this,MenuAwalActivity.class);
                 startActivity(i); // menghubungkan activity splashscren ke main activity dengan intent
 
 

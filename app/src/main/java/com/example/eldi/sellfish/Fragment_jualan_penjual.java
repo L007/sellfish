@@ -2,6 +2,7 @@ package com.example.eldi.sellfish;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 
 import android.graphics.drawable.ColorDrawable;
@@ -18,6 +19,7 @@ import android.view.ViewGroup;
 import android.widget.GridView;
 import android.widget.ListView;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -32,7 +34,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by eldi on 18/10/2017.
@@ -42,8 +46,9 @@ public class Fragment_jualan_penjual extends Fragment {
     private List<Jualan> jualanList = new ArrayList<Jualan>();
     private ListView listView;
     private CustomListAdapter adapter;
+    String id;
 
-    public static final String url = "http://10.0.3.2/sellfish/jualan.php?apicall=get_all_product";
+    public static final String url = "http://192.168.43.241/sellfish/jualan.php?apicall=get_all_product_by_id";
     private FloatingActionButton fab;
     private GridView gridView;
 
@@ -82,7 +87,9 @@ public class Fragment_jualan_penjual extends Fragment {
         // Showing progress dialog before making http request
         pDialog.setMessage("Loading...");
         pDialog.show();
-
+        SharedPreferences pref = getActivity().getApplicationContext().getSharedPreferences("MyPref", 0); // 0 - for private mode
+        SharedPreferences.Editor editor = pref.edit();
+        id = pref.getString("id_user",null);
         
         // Creating volley request obj
         StringRequest stringRequest = new StringRequest(Request.Method.POST,url,
@@ -102,7 +109,7 @@ public class Fragment_jualan_penjual extends Fragment {
                                     JSONObject objJualan = jsonArray.getJSONObject(i);
                                     Jualan jualan = new Jualan();
                                     jualan.setNamaIkan(objJualan.getString("nama_ikan"));
-                                    jualan.setThumbnailUrl("http://10.0.3.2/sellfish/gambar/" + objJualan.getString("gambar"));
+                                    jualan.setThumbnailUrl("http://192.168.43.241/sellfish/gambar/" + objJualan.getString("gambar"));
                                     jualan.setHarga(objJualan.getString("harga_ikan"));
                                     jualan.setJumlahStok(objJualan.getString("stok_ikan"));
                                     jualan.setPenjual(objJualan.getString("nama_penjual"));
@@ -135,7 +142,14 @@ public class Fragment_jualan_penjual extends Fragment {
                 hidePDialog();
 
             }
-        });
+        }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> map = new HashMap<String, String>();
+                map.put("id_user",id);
+                return map;
+            }
+        };
 
         // Adding request to request queue
         AppController.getInstance().addToRequestQueue(stringRequest);
@@ -168,6 +182,6 @@ public class Fragment_jualan_penjual extends Fragment {
         }
     }
 
-  
+
 }
 

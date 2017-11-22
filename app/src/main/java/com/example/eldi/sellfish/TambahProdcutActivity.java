@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Base64;
@@ -41,7 +42,7 @@ public class TambahProdcutActivity extends AppCompatActivity {
     EditText namaIkan, stokIkan, hargaIkan, deskripsiIkan;
     private final int IMG_REQUEST = 1;
     private Bitmap bitmap;
-    private String uploadURL = "http://10.0.3.2/sellfish/jualan.php?apicall=insert_jualan";
+    private String uploadURL = "http://192.168.43.241/sellfish/jualan.php?apicall=insert_jualan";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -115,6 +116,8 @@ public class TambahProdcutActivity extends AppCompatActivity {
                                 //JSONObject user = jObj.getJSONObject("user");
                                 Toast.makeText(getApplicationContext(), "upload sukses", Toast.LENGTH_SHORT).show();
                                 onBackPressed();
+
+
                                // onResume();
 
 

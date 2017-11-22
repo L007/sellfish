@@ -9,7 +9,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,10 +30,11 @@ import java.util.Map;
 public class Fragment_profil_penjual extends Fragment {
     public static final String getUserProfil ="http://10.0.3.2/sellfish/user.php?apicall=get_user_by_id";
     private TextView username_penjual, email_penjual;
+
     int id;
 
     String nama,username,password,email,no_ktp,user_id;
-    Button tentang,profil;
+    Button tentang,profil,btnFeedBack;
 
     public Fragment_profil_penjual() {
 
@@ -60,6 +60,7 @@ public class Fragment_profil_penjual extends Fragment {
         email_penjual=(TextView) view.findViewById(R.id.email_penjual);
         tentang=(Button)view.findViewById(R.id.about);
         profil=(Button)view.findViewById(R.id.profil);
+        btnFeedBack=(Button)view.findViewById(R.id.feedback);
 
         String txtUsername = pref.getString("username",null); //getArguments().getString("username");
         String txtEmail = pref.getString("email",null);//getArguments().getString("email");
@@ -79,6 +80,14 @@ public class Fragment_profil_penjual extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(getActivity(),about.class);
+                startActivity(i);
+            }
+        });
+
+        btnFeedBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getActivity(),Feedback.class);
                 startActivity(i);
             }
         });
