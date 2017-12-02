@@ -35,7 +35,7 @@ public class Feedback extends AppCompatActivity {
     private FeedBackListAdapter adapter;
     String id;
 
-    public static final String url = "http://192.168.43.241/sellfish/feedback.php?apicall=get_all_feed_to_penjual";
+    public static final String url = "http://10.0.3.2/sellfish/feedback.php?apicall=get_all_feed_to_penjual";
 
     @Override
     /*coba push ke github*/

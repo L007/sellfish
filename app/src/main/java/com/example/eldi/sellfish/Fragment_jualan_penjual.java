@@ -16,8 +16,10 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -44,11 +46,12 @@ import java.util.Map;
 public class Fragment_jualan_penjual extends Fragment {
     private ProgressDialog pDialog;
     private List<Jualan> jualanList = new ArrayList<Jualan>();
+
     private ListView listView;
     private CustomListAdapter adapter;
     String id;
 
-    public static final String url = "http://192.168.43.241/sellfish/jualan.php?apicall=get_all_product_by_id";
+    public static final String url = "http://10.0.3.2/sellfish/jualan.php?apicall=get_all_product_by_id";
     private FloatingActionButton fab;
     private GridView gridView;
 
@@ -83,6 +86,15 @@ public class Fragment_jualan_penjual extends Fragment {
         adapter = new CustomListAdapter(getActivity(), jualanList);
         listView.setAdapter(adapter);
 
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Jualan m = jualanList.get(i);
+                Toast.makeText(getActivity(), "clicked on item "+adapter.getItemId(i)+"harga : "+m.getHarga(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
         pDialog = new ProgressDialog(getActivity());
         // Showing progress dialog before making http request
         pDialog.setMessage("Loading...");
@@ -107,12 +119,14 @@ public class Fragment_jualan_penjual extends Fragment {
                                 JSONArray jsonArray = obj.getJSONArray("data");
                                 for(int i=0; i<jsonArray.length(); i++) {
                                     JSONObject objJualan = jsonArray.getJSONObject(i);
-                                    Jualan jualan = new Jualan();
+                                    final Jualan jualan = new Jualan();
                                     jualan.setNamaIkan(objJualan.getString("nama_ikan"));
-                                    jualan.setThumbnailUrl("http://192.168.43.241/sellfish/gambar/" + objJualan.getString("gambar"));
+                                    jualan.setThumbnailUrl("http://10.0.3.2/sellfish/gambar/" + objJualan.getString("gambar"));
                                     jualan.setHarga(objJualan.getString("harga_ikan"));
                                     jualan.setJumlahStok(objJualan.getString("stok_ikan"));
                                     jualan.setPenjual(objJualan.getString("nama_penjual"));
+
+
 
                                     // Genre is json array
                                 /*JSONArray jualanArray = obj.getJSONArray("data");*/
@@ -164,6 +178,10 @@ public class Fragment_jualan_penjual extends Fragment {
                 startActivity(i);
             }
         });
+
+
+
+
         //  getData();
         return view;
 

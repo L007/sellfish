@@ -22,7 +22,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class profil_user extends AppCompatActivity {
-    public static final String updateUser ="http://192.168.43.241/sellfish/user.php?apicall=update_user";
+    public static final String updateUser ="http://10.0.3.2/sellfish/user.php?apicall=update_user";
     EditText etNama,etUsername,etPassword,etEmail,etNoKtp;
     String nama,username,password,email,no_ktp,user_id;
     Button simpan;
