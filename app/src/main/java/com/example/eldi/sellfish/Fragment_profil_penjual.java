@@ -34,7 +34,7 @@ public class Fragment_profil_penjual extends Fragment {
     int id;
 
     String nama,username,password,email,no_ktp,user_id;
-    Button tentang,profil,btnFeedBack;
+    Button tentang,profil,btnFeedBack,btnStat;
 
     public Fragment_profil_penjual() {
 
@@ -61,6 +61,7 @@ public class Fragment_profil_penjual extends Fragment {
         tentang=(Button)view.findViewById(R.id.about);
         profil=(Button)view.findViewById(R.id.profil);
         btnFeedBack=(Button)view.findViewById(R.id.feedback);
+        btnStat=(Button)view.findViewById(R.id.stat_penjualan);
 
         String txtUsername = pref.getString("username",null); //getArguments().getString("username");
         String txtEmail = pref.getString("email",null);//getArguments().getString("email");
@@ -88,6 +89,14 @@ public class Fragment_profil_penjual extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(getActivity(),Feedback.class);
+                startActivity(i);
+            }
+        });
+
+        btnStat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getActivity(),StatistikPenjualan.class);
                 startActivity(i);
             }
         });
@@ -168,5 +177,8 @@ public class Fragment_profil_penjual extends Fragment {
        /* RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest); */
     }
+
+
+
 }
 

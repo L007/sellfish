@@ -46,7 +46,8 @@
         <activity android:name=".profil_user" />
         <activity android:name=".TambahProdcutActivity" />
         <activity android:name=".Feedback" />
-        <activity android:name=".detailProduk"></activity>
+        <activity android:name=".detailProduk" />
+        <activity android:name=".StatistikPenjualan"></activity>
     </application>
 
 </manifest>
