@@ -45,7 +45,8 @@
             android:theme="@style/fullscreen" />
         <activity android:name=".profil_user" />
         <activity android:name=".TambahProdcutActivity" />
-        <activity android:name=".Feedback"></activity>
+        <activity android:name=".Feedback" />
+        <activity android:name=".detailProduk"></activity>
     </application>
 
 </manifest>

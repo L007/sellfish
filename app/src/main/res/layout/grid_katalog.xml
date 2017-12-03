@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:padding="8dp" >
+    android:padding="8dp"
+    android:orientation="vertical"
+    android:background="#FFFFFF"
+    >
 
 <!--android:background="@drawable/list_row_selector"-->
 
@@ -10,57 +13,65 @@
     <com.android.volley.toolbox.NetworkImageView
         android:background="#000000"
         android:id="@+id/img_gambar_ikan"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="170dp"
+        android:layout_height="170dp"
         android:layout_alignParentLeft="true"
         android:layout_marginRight="8dp" />
 
     <!-- Movie Title -->
     <TextView
-        android:textColor="#000000"
         android:text="Nama ikan"
+        android:textColor="#000000"
         android:id="@+id/txt_nama_ikan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/img_gambar_ikan"
-        android:layout_toRightOf="@+id/img_gambar_ikan"
         android:textSize="10pt"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:layout_below="@+id/img_gambar_ikan"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="14dp" />
 
     <!-- Rating -->
+
+
     <TextView
         android:textStyle="bold"
-        android:textColor="@color/colorAccent"
         android:id="@+id/txt_harga"
         android:text="harga"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/txt_nama_ikan"
-        android:layout_marginTop="1dip"
-        android:layout_toRightOf="@+id/img_gambar_ikan"
-        android:textSize="7pt" />
+        android:layout_marginTop="8dp"
+        android:textSize="7pt"
+        android:textColor="@color/colorPrimaryDark"
+        android:layout_below="@+id/txt_nama_ikan"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
-    <!-- Genre -->
     <TextView
         android:text="jumlah stok"
         android:id="@+id/txt_jumlah_stok"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/txt_harga"
-        android:layout_marginTop="5dp"
-        android:layout_toRightOf="@+id/img_gambar_ikan"
-        android:textColor="#000000"
-        android:textSize="10pt" />
+        android:layout_marginTop="10dp"
+        android:textColor="#4CAF50"
+        android:textSize="7pt"
+        android:layout_below="@+id/txt_harga"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <!-- Genre -->
 
     <!-- Release Year -->
     <TextView
         android:text="penjual"
+        android:layout_marginTop="8dp"
         android:id="@+id/txt_penjual"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="7pt"
         android:layout_alignParentBottom="true"
-        android:layout_alignRight="@+id/txt_jumlah_stok"
-        android:layout_alignEnd="@+id/txt_jumlah_stok" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
-</RelativeLayout>
+</LinearLayout>

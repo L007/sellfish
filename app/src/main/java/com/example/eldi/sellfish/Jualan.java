@@ -3,23 +3,26 @@ package com.example.eldi.sellfish;
 /**
  * Created by eldi on 17/11/2017.
  */
+
 import java.util.ArrayList;
 
 public class Jualan {
-    private String namaIkan, thumbnailUrl,harga,jumlahStok,penjual;
+    private String id, namaIkan, thumbnailUrl, harga, jumlahStok, penjual, deskripsi;
 
     private ArrayList<String> jualan;
 
     public Jualan() {
     }
 
-    public Jualan(String namaIkan, String thumbnailUrl, String harga, String jumlahStok,String penjual,
+    public Jualan(String id, String namaIkan, String thumbnailUrl, String harga, String jumlahStok, String penjual, String deskripsi,
                   ArrayList<String> jualan) {
+        this.id = id;
         this.namaIkan = namaIkan;
         this.thumbnailUrl = thumbnailUrl;
         this.harga = harga;
         this.jumlahStok = jumlahStok;
         this.penjual = penjual;
+        this.deskripsi = deskripsi;
     }
 
     public String getNamaIkan() {
@@ -51,7 +54,7 @@ public class Jualan {
     }
 
     public void setJumlahStok(String jumlahStok) {
-        this.jumlahStok=jumlahStok;
+        this.jumlahStok = jumlahStok;
     }
 
     public ArrayList<String> getJualan() {
@@ -61,11 +64,26 @@ public class Jualan {
     public void setJualan(ArrayList<String> jualan) {
         this.jualan = jualan;
     }
-    public String getPenjual(){
+
+    public String getPenjual() {
         return penjual;
     }
-    public void setPenjual(String penjual){
-        this.penjual=penjual;
+
+    public void setPenjual(String penjual) {
+        this.penjual = penjual;
     }
 
+    public void setDeskripsi(String deskripsi) {
+        this.deskripsi = deskripsi;
+    }
+
+    public String getDeskripsi() {
+        return deskripsi;
+    }
+    public void setId(String id){
+        this.id=id;
+    }
+    public String getId(){
+        return id;
+    }
 }

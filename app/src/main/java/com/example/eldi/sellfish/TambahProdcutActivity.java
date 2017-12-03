@@ -42,7 +42,7 @@ public class TambahProdcutActivity extends AppCompatActivity {
     EditText namaIkan, stokIkan, hargaIkan, deskripsiIkan;
     private final int IMG_REQUEST = 1;
     private Bitmap bitmap;
-    private String uploadURL = "http://192.168.43.241/sellfish/jualan.php?apicall=insert_jualan";
+    private String uploadURL = "http://10.0.3.2/sellfish/jualan.php?apicall=insert_jualan";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
